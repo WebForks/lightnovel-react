@@ -7,11 +7,11 @@ const NovelWorld = ({lightNovel}) => {
                 <p>{lightNovel.status}</p>
             </div>
             <div>
-                <img src={lightNovel.coverImage.large !== 'N/A' ? lightNovel.Poster : 'https://viaplaceholder.com/400'} alt={lightNovel.Title} />
+                <img src={lightNovel.coverImage.large !== 'N/A' ? lightNovel.coverImage.large : 'https://viaplaceholder.com/400'} alt={lightNovel.Title} />
             </div>
             <div>
                 <span>{lightNovel.format}</span>
-                <h3>{lightNovel.title.english}</h3>
+                <h3>{lightNovel.title.english !== null ? lightNovel.title.english : lightNovel.title.romaji}</h3>
             </div>
         </div>
     )

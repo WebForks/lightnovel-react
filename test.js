@@ -18,3 +18,8 @@ Anilist.searchEntry.manga("Classroom of the Elite", myFilter).then(data => {
    console.log(shows)
 });
 
+const handleKeyDown = event => {
+   if (event.key === "Enter") {
+      searchLightNovels(searchTerm)
+   }
+}

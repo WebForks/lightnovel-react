@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NovelWorld from "./NovelWorld";
+import SearchIcon from "./search.svg";
 import './App.css';
 
 const App = () => {
@@ -23,35 +24,37 @@ const App = () => {
       let shows = [];
       const titles = String(title)
       Anilist.searchEntry.manga(titles, myFilter).then(data => {
-          const idNumbers = data.media.map(item => item.id);
-          for (const i of idNumbers){
+          for (const i of data.media.map(item => item.id)){
             Anilist.media.manga(i).then(data => {
                shows.push(data)
               })
           }
-          console.logs(shows)
-      });
+          console.log(shows)
+          console.log("a")
+      })
+   
+      setLightNovels(shows)
    }
 
    useEffect(() => {
-      searchLightNovels("");
+      searchLightNovels();
    }, []);
 
    return (
-      <div className='Nav-Bar'>
-         <div className='home-page-logo'>
-            <button id='home-page'>Novel World</button>
+
+      <div className="app">
+         <h1>NovelWorld</h1>
+
+         <div className="search">
+         <input
+            placeholder="Search for Light Novels.."
+            value={searchTerm}
+            onChange={(e) => {setSearchTerm(e.target.value)}}
+            onKeyDown={handleKeyDown}
+         />
+         <img src={SearchIcon} alt="search-icon" onClick={() => searchLightNovels(searchTerm)} />
          </div>
       
-         <div className="search">
-            <input id='search-bar'
-               placeholder="Search for Light novels.."
-               value={searchTerm}
-               onChange={(e) => {setSearchTerm(e.target.value)}}
-               onKeyDown={handleKeyDown}
-            />
-         </div>
-
          {
             lightNovels?.length > 0 
             ? (
