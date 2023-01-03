@@ -36,6 +36,8 @@ const App = () => {
       setLightNovels(shows)
    }
 
+
+   //https://stackoverflow.com/questions/63443574/react-searches-do-not-render
    useEffect(() => {
       searchLightNovels();
    }, []);
