@@ -20,22 +20,21 @@ const App = () => {
    const Anilist = new anilist();
 
    const searchLightNovels = (title) => {
+      let shows = [];
       const titles = String(title)
       Anilist.searchEntry.manga(titles, myFilter).then(data => {
-          const media2 = (data.media);
-          const idNumbers = media2.map(item => item.id);
+          const idNumbers = data.media.map(item => item.id);
           for (const i of idNumbers){
             Anilist.media.manga(i).then(data => {
-                const a = JSON.stringify(data);
-                const b = JSON.parse(a);
-                console.log(b)
+               shows.push(data)
               })
           }
+          console.logs(shows)
       });
    }
 
    useEffect(() => {
-      searchLightNovels("Classroom of the Elite");
+      searchLightNovels("");
    }, []);
 
    return (
