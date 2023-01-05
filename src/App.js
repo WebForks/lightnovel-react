@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import NovelWorld from "./NovelWorld";
+import NovelWorld from "./NovelWorld.jsx";
+import LNPage from "./LNPage.js"
 import SearchIcon from "./search.svg";
+import {Router, Link} from 'react-router-dom'
 import './App.css';
 
 const App = () => {
@@ -34,6 +36,7 @@ const App = () => {
       })
    }
 
+   //https://www.youtube.com/watch?v=xMNhDf5-hvk
    //https://stackoverflow.com/questions/63443574/react-searches-do-not-render
    useEffect(() => {
       searchLightNovels();
