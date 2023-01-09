@@ -1,22 +1,27 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700");
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
 
+
+/* applys to all elements */
 * {
   margin: 0;
   border: 0;
   box-sizing: border-box;
 }
 
+/* only applys to everything in jsx html */
 :root {
   --font-roboto: "Roboto Slab", serif;
   --font-raleway: "Raleway", sans-serif;
 }
 
+/* manages background color */
 body {
   font-family: var(--font-roboto);
   background-color: #212426;
 }
 
+/* manages everthing in app className */
 .app {
   padding: 4rem;
 
@@ -26,7 +31,8 @@ body {
   flex-direction: column;
 }
 
-h1 {
+/* manages the text in <h1> currently is "Novel World" */
+#title {
   font-size: 3rem;
   letter-spacing: 0.9px;
   background: linear-gradient(
@@ -40,6 +46,7 @@ h1 {
   width: fit-content;
 }
 
+/* manages search box and the colors */
 .search {
   width: 71%;
   margin: 4rem 0 2rem;
@@ -55,6 +62,7 @@ h1 {
   box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
 }
 
+/* manages the color and font of the text in the search box */
 .search input {
   flex: 1;
   border: none;
@@ -68,28 +76,14 @@ h1 {
   background: #1f2123;
 }
 
+/* search icon image */
 .search img {
   width: 35px;
   height: 35px;
   cursor: pointer;
 }
 
-/* .search button {
-  padding: 20px 40px;
-  border-radius: 0.5rem;
-  margin-left: 15px;
-  color: #a1a1a1;
-  font-family: var(--font-raleway);
-  font-weight: 900;
-  letter-spacing: 0.75px;
-  font-size: 1.25rem;
-  cursor: pointer;
-
-  background: #1f2123;
-  -webkit-box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-  box-shadow: 5px 5px 7px #1c1d1f, -5px -5px 7px #222527;
-} */
-
+/* css for what gets displayed when no light novel is searched in search bar */
 .empty {
   width: 100%;
   margin-top: 3rem;
@@ -99,11 +93,13 @@ h1 {
   align-items: center;
 }
 
+/* css for the text for the empty.  currently is "Light Novels not found".  */
 .empty h2 {
   font-size: 1.25rem;
   color: #f9d3b4;
   font-family: var(--font-raleway);
 }
+
 
 .container {
   width: 100%;
@@ -181,11 +177,11 @@ h1 {
 
 .lightNovel:hover div:nth-of-type(2) {
   height: 100%;
-  opacity: 0.3;
+  opacity: 1;
 }
 
 .lightNovel:hover div:nth-of-type(3) {
-  background-color: transparent;
+  background-color: #343739;
 }
 
 .lightNovel:hover div:nth-of-type(1) {

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NovelWorld from "./NovelWorld.jsx";
-import LNPage from "./LNPage.js"
 import SearchIcon from "./search.svg";
-import {Router, Link} from 'react-router-dom'
 import './App.css';
 
 const App = () => {
@@ -22,22 +20,17 @@ const App = () => {
    const anilist = require('anilist-node');
    const Anilist = new anilist();
 
-   const searchLightNovels = (title) => {
+   const searchLightNovels = async (title) => {
       let shows = [];
       const titles = String(title)
-      Anilist.searchEntry.manga(titles, myFilter).then(data => {
-          for (const i of data.media.map(item => item.id)){
-            Anilist.media.manga(i).then(data => {
-               shows.push(data)
-              })
-          }
-          console.log(shows)
-          setLightNovels(shows)
-      })
+      const data = await Anilist.searchEntry.manga(titles, myFilter)
+      await Promise.all(data.media.map(item => item.id).map(async i => {
+           const data = await Anilist.media.manga(i)
+           shows.push(data)
+      }))
+      setLightNovels(shows)
    }
 
-   //https://www.youtube.com/watch?v=xMNhDf5-hvk
-   //https://stackoverflow.com/questions/63443574/react-searches-do-not-render
    useEffect(() => {
       searchLightNovels();
    }, []);
@@ -45,16 +38,18 @@ const App = () => {
    return (
 
       <div className="app">
-         <h1>NovelWorld</h1>
+         <div className="title-home-btn">
+            <h1 id="title">NovelWorld</h1>
+         </div>
 
          <div className="search">
-         <input
-            placeholder="Search for Light Novels.."
-            value={searchTerm}
-            onChange={(e) => {setSearchTerm(e.target.value)}}
-            onKeyDown={handleKeyDown}
-         />
-         <img src={SearchIcon} alt="search-icon" onClick={() => searchLightNovels(searchTerm)} />
+            <input
+               placeholder="Search for Light Novels.."
+               value={searchTerm}
+               onChange={(e) => {setSearchTerm(e.target.value)}}
+               onKeyDown={handleKeyDown}
+            />
+            <img src={SearchIcon} alt="search-icon" onClick={() => searchLightNovels(searchTerm)} />
          </div>
       
          {
