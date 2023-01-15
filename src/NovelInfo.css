@@ -97,3 +97,23 @@
    font-size: 20px;
    display: grid;
 }
+
+.LN-dates {
+   width: 65%;
+   padding: 30px 10px 0px 10px;
+   float: left;
+   color: #f9d3b4;
+   font-weight: normal;
+   font-size: 20px;
+   display: grid;
+}
+
+.LN-volumes {
+   width: 65%;
+   padding: 30px 10px 0px 10px;
+   float: left;
+   color: #f9d3b4;
+   font-weight: normal;
+   font-size: 20px;
+   display: grid;
+}

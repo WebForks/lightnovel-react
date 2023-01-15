@@ -1,3 +1,10 @@
-a = [{title: {english: "Pie" , romaji: "poo" , native: "reee"}, fruit: "banana", car: "sedan"}]
+let myFilter = {
+   format: "NOVEL"
+}
 
-console.log(a[0].title.english)
+const anilist = require('anilist-node');
+const Anilist = new anilist();
+
+Anilist.searchEntry.manga(null, myFilter,1,25).then(data => {
+   console.log(data);
+});

@@ -4,6 +4,7 @@ import './NovelInfo.css'
 
 const NovelInfo = ({lninfos}) => {
 
+
     return (
         <div className='Ln-info'>
 
@@ -38,13 +39,15 @@ const NovelInfo = ({lninfos}) => {
             <div className="Ln-status">
                <h3>status: {lninfos.status}</h3>
             </div>
+            
+            <div className="LN-dates">
+               <h3>End month & year: {lninfos.endDate.month !== null ? lninfos.endDate.month : 'Releasing'}/{lninfos.endDate.year !== null ? lninfos.endDate.year : 'Releasing'}</h3> {/* need to put releasing/null if still releasing */}
+               <h3>Start month & year: {lninfos.startDate.month} / {lninfos.startDate.year}</h3>
+            </div>
 
-
-               <h3>{lninfos.endDate.year !== null ? lninfos.endDate.year : 'Still releasing 1'}</h3> {/* need to put releasing/null if still releasing */}
-               <h3>{lninfos.startDate.year}</h3>
-               <h3>{lninfos.volumes !== null ? lninfos.volumes : 'Still releasing'}</h3>  {/* need to put releasing/null if still releasing */}
-               <h3>{lninfos.siteUrl}</h3>
-               <h3>{lninfos.countryOfOrigin}</h3>
+            <div className="LN-volumes">
+               <h3>Volumes: {lninfos.volumes !== null ? lninfos.volumes : 'Still releasing'}</h3>  {/* need to put releasing/null if still releasing */}
+            </div>
 
         </div>
     )
