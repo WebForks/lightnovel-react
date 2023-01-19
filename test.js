@@ -1,10 +1,16 @@
+const anilist = require('anilist-node');
+const Anilist = new anilist();
+
 let myFilter = {
    format: "NOVEL"
 }
 
-const anilist = require('anilist-node');
-const Anilist = new anilist();
-
-Anilist.searchEntry.manga(null, myFilter,1,25).then(data => {
-   console.log(data);
+Anilist.searchEntry.manga("ReZERO -Starting Life in Another World", myFilter).then(data => {
+   searchFile(data);
 });
+
+function searchFile(data) {
+   let arr = [ { id: 85737, title: [Object] }, { id: 87262, title: [Object] } ];
+   let idList = arr.map(obj => obj.id);
+   console.log(idList[0]);
+}

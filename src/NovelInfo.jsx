@@ -1,12 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './NovelInfo.css'
+import data from "./idVolume.json";
 
 const NovelInfo = ({lninfos}) => {
-
+   let volumeData = []
+   data.map((postData) => {
+      volumeData.push(postData);
+   })
+   console.log(volumeData)
 
     return (
-        <div className='Ln-info'>
+      <>
+
+         <div className='Ln-info'>
 
             <div className="Nav-Bar">
                <button id="nav-bar-home-btn"><Link to='/' style={{ textDecoration: 'none' }}>Home</Link></button>
@@ -49,7 +56,13 @@ const NovelInfo = ({lninfos}) => {
                <h3>Volumes: {lninfos.volumes !== null ? lninfos.volumes : 'Still releasing'}</h3>  {/* need to put releasing/null if still releasing */}
             </div>
 
-        </div>
+         </div>
+         <div className="novelFiles">
+            <div>
+               
+            </div>
+         </div>            
+      </>
     )
 }
 

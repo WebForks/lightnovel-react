@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useLocation} from 'react-router-dom';
 import NovelInfo from "./NovelInfo.jsx";
-import NovelFiles from "./NovelFiles.jsx";
-
 
 const LNPage = () => {
    const location = useLocation();
@@ -21,9 +19,6 @@ const LNPage = () => {
       info.push(data);
       setLnInfo(info)
     }
-
-
-   console.log(LnInfo)
 
    useEffect(() => {
       processData();
