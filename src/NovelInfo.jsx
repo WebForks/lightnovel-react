@@ -8,7 +8,19 @@ const NovelInfo = ({lninfos}) => {
    data.map((postData) => {
       volumeData.push(postData);
    })
-   console.log(volumeData)
+   
+   let searchValue = String(lninfos.id);
+   let thisIdInfo = [];
+
+   for (let i = 0; i < volumeData.length; i++) {
+      if (volumeData[i].id === searchValue) {
+         thisIdInfo.push(volumeData[i])
+      }
+   }
+
+   //console.log(thisIdInfo)
+   //console.log(volumeData)
+   //console.log(lninfos)
 
     return (
       <>
@@ -57,9 +69,12 @@ const NovelInfo = ({lninfos}) => {
             </div>
 
          </div>
+
          <div className="novelFiles">
             <div>
-               
+               <h3>{data[0].id}</h3>
+               <h3>{volumeData[0].volumes}</h3>
+               <h3>{volumeData[0].files}</h3>
             </div>
          </div>            
       </>
