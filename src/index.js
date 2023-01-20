@@ -14,10 +14,10 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route exact path= '/' element= {<App/>} />
-        <Route exact path= "/lightnovel/*" element= {<LNPage/>} />
+        <Route exact path= "/lightnovel/:id" element= {<LNPage/>} />
         <Route exact path='/list' element={<List/>} />
         <Route exact path='/login' element={<Account/>} />
-        <Route exact path="/read/*" element={<ReadEpub/>} />
+        <Route exact path="/read/:id/:files" element={<ReadEpub/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

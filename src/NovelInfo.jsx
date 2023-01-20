@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import './NovelInfo.css'
 import data from "./idVolume.json";
 
+
 const NovelInfo = ({lninfos}) => {
    let volumeData = []
    data.map((postData) => {
@@ -79,11 +80,15 @@ const NovelInfo = ({lninfos}) => {
             <div className="Files">
                <ul style={{listStyleType: "none"}}>
                   {thisIdInfo[0].files.map((element, index) => {
-                  return <Link to={{pathname: `/read/${element}`}}><li key={index}>{element}</li>;</Link>
-                  })}
+                  return  <Link to={{pathname: `/read/${lninfos.id}/${element}`}}><li key={index}>{element}</li> </Link>})}
                </ul>
             </div>
-
+            
+            <div className="DownloadFiles">
+               {thisIdInfo[0].files.map((element) => {
+                  return  <a href={`http://localhost:3001/download/${lninfos.id}/${element}`}><button>download</button> </a>})
+               }   
+            </div>
          </div>            
       </>
     )

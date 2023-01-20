@@ -1,5 +1,6 @@
+// run node getVolumes.js to start
+
 const schedule = require('node-schedule');
-const path = require('path');
 const fs = require('fs');
 const jsonfile = require('jsonfile')
 
