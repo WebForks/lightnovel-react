@@ -71,11 +71,19 @@ const NovelInfo = ({lninfos}) => {
          </div>
 
          <div className="novelFiles">
-            <div>
-               <h3>{data[0].id}</h3>
-               <h3>{volumeData[0].volumes}</h3>
-               <h3>{volumeData[0].files}</h3>
+
+            <div className="Volumes">
+               <h3>{thisIdInfo[0].volumes}</h3>
             </div>
+
+            <div className="Files">
+               <ul style={{listStyleType: "none"}}>
+                  {thisIdInfo[0].files.map((element, index) => {
+                  return <Link to={{pathname: `/read/${element}`}}><li key={index}>{element}</li>;</Link>
+                  })}
+               </ul>
+            </div>
+
          </div>            
       </>
     )

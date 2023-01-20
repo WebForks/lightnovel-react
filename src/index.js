@@ -4,7 +4,8 @@ import {BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App.js';
 import List from './List.js'
 import LNPage from './LNPage.js';
-import Account from './Account.js'
+import Account from './Account.js';
+import ReadEpub from './ReadEpub.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,6 +17,7 @@ root.render(
         <Route exact path= "/lightnovel/*" element= {<LNPage/>} />
         <Route exact path='/list' element={<List/>} />
         <Route exact path='/login' element={<Account/>} />
+        <Route exact path="/read/*" element={<ReadEpub/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
