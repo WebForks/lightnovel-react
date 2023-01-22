@@ -1,0 +1,86 @@
+/*
+/* manages the box size, position, and shadow when it is in default position*/
+.lightNovel {
+
+  margin: 1.5rem;
+  border: none;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+  width: 310px;
+  height: 460px;
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+}
+
+/* shows the status and id of the light novel when it isnt hovered over */
+.lightNovel div:nth-of-type(1) {
+  position: absolute;
+  padding: 16px;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+  color: #dd1515;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+/*shows status and id number when hover over box */
+.lightNovel:hover div:nth-of-type(1) {
+  opacity: 1;
+}
+
+/*manages the book title size */
+.lightNovel div:nth-of-type(2) {
+  width: 100%;
+  height: 100%;
+}
+
+
+/*manages the color of the background that the title is on in the box */
+.lightNovel div:nth-of-type(3) {
+  z-index: 2;
+  background-color: #343739;
+  /* top | right | bottom | left */
+  padding: 10px 24px 24px 24px;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+/*manages the type book it is.  should awlays be Novel */
+.lightNovel div:nth-of-type(3) span {
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #f0f0f0;
+
+}
+
+/* title of the novel in the bottom box */
+.lightNovel div:nth-of-type(3) h3 {
+  margin-top: 5px;
+  color: #f0f0f0;
+}
+
+/*manages size box grows when you hover over it and color and size the box shadow grows when you hover */
+.lightNovel:hover {
+  /*offset-x | offset-y | blur-radius | spread-radius*/
+  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05, 1.05);
+}
+
+/* changes tint of background when hovering over the box */
+.lightNovel:hover div:nth-of-type(2) {
+  height: 0%;
+  opacity: 0.3;
+
+}
+
+/* box change to transparency when hover over box */
+.lightNovel:hover div:nth-of-type(3) {
+  background-color: transparent;
+}
