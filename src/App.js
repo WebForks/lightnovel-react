@@ -39,24 +39,22 @@ const App = () => {
 
    return (
       <div className="" >
-         <nav className="fixed top-0 z-40 w-full bg-gray-700 shadow-lg navbar backdrop-blur bg-opacity-90">
-            <div className="relative flex items-center h-16 mx-4 space-x-1 font-bold">
-               <ul className="hidden space-x-1 grow lg:flex justify-center">
-                  <li className=" block px-3 py-2 font-semibold rounded-md outline-none text-slate-300 hover:text-slate-200 hover:bg-gray-800 focus:bg-gray-800">
+         <nav className="flex justify-center bg-gray-700 w-full fixed top-0 shadow-lg backdrop-blur bg-opacity-90 h-16 items-center z-40">
+               <ul className="flex text-slate-300 font-bold">
+                  <li className="mr-6">
                      <Link to='/'>Home</Link>
                   </li>
-                  <li className="block px-3 py-2 font-semibold rounded-md outline-none text-slate-300 hover:text-slate-200 hover:bg-gray-800 focus:bg-gray-800">
+                  <li className="mr-6">
                      <Link to='/list'>List</Link>
                   </li>
-                  <li className="block px-3 py-2 font-semibold rounded-md outline-none text-slate-300 hover:text-slate-200 hover:bg-gray-800 focus:bg-gray-800">
+                  <li className="">
                      <Link to='/login'>Account</Link>
                   </li>
                </ul>
-            </div>
          </nav>
 
          <div className="flex items-center justify-center text-3xl rounded-lg">
-            <input className="mt-40 text-center bg-gray-700 text-slate-300" //change my-40 to mt-40 maybe if want word outside of box
+            <input className="mt-40 text-center bg-gray-700 text-slate-300 text-3xl" //change my-40 to mt-40 maybe if want word outside of box
                placeholder="Search for Light Novels.."
                value={searchTerm}
                onChange={(e) => {setSearchTerm(e.target.value)}}

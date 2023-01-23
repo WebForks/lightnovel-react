@@ -52,8 +52,8 @@ FileAPI.listen( 3001, () => console.log("FileAPI listening to port " + 3001))
 
 
 
-const directory = './novels'
-const FileJson = './src/idVolume.json'
+const directory = '../novels'
+const FileJson = '../src/idVolume.json'
 
 
 //gets subdirectorie which is the id for the light novels
@@ -75,7 +75,7 @@ function fileNames () {
     getSubDirectories((subdirectories) => {
         const readPromises = subdirectories.map(subdir => {
             return new Promise((resolve, reject) => {
-                fs.readdir(`./novels/${subdir}`, (err, files) => {
+                fs.readdir(`../novels/${subdir}`, (err, files) => {
                     if (err) {
                       reject(err);
                       return;
@@ -98,7 +98,6 @@ function fileNames () {
         });
     });
 }
-
 
 
 
