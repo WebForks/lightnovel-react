@@ -10,6 +10,10 @@ const cors = require('cors');
 const FolderAPI = express();
 const FileAPI = express();
 
+// use { origin: 'URL OF THE WEBSITE' } to specify which url to allow to accept
+// https://www.section.io/engineering-education/how-to-use-cors-in-nodejs-with-express/
+FolderAPI.use(cors())
+FileAPI.use(cors())
 
 
 FolderAPI.get('/download/:id', (req, res) => {
@@ -29,8 +33,6 @@ FolderAPI.listen(3002, () => {
 });
 
 
-
-FileAPI.use(cors())
 FileAPI.get("/download/:id/:filename", (req, res) => {    
     const fileName = req.params.filename;
     const id = req.params.id;
