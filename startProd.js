@@ -27,5 +27,5 @@ exec('cd backend && node index.js', (err, stdout, stderr) => {
     console.error(err);
     return;
   }
-  console.log(stdout);
+  console.log("started backend");
 });

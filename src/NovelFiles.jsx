@@ -14,7 +14,7 @@ const NovelFiles = (props) => {
                         <div key={index} className="flex justify-between text-center items-center">
                            <span className="text-lg mr-2">{index+1}.</span>
                            <Link to={{pathname: `/read/${lninfos.id}/${element}`}}><li key={index}>{element}</li></Link>
-                           <a className="ml-3 hover:bg-gray-900 p-1 rounded-lg"href={`http://localhost:3001/download/${lninfos.id}/${element}`}><button className="">download</button> </a>
+                           <a className="ml-3 hover:bg-gray-900 p-1 rounded-lg" href={`http://localhost:3001/download/${lninfos.id}/${element}`}><button className="">download</button> </a>
                            <div className="mb-10 "></div>
                         </div>
                      ])
