@@ -25,23 +25,23 @@ const NovelInfo = ({lninfos}) => {
 
     return (
       <div className="">
-         <nav className="flex  justify-center bg-gray-700 w-full fixed top-0 shadow-lg backdrop-blur bg-opacity-90 h-16 items-center z-40">
+         <nav className="flex justify-center bg-gray-700 w-full fixed top-0 shadow-lg backdrop-blur bg-opacity-90 h-16 items-center z-4">
                <ul className="flex text-slate-300 font-bold">
                   <li className="mr-6">
-                     <Link to='/'>Home</Link>
+                     <Link className='hover:bg-gray-900 p-3 rounded-lg' to='/'>Home</Link>
                   </li>
                   <li className="mr-6">
-                     <Link to='/list'>List</Link>
+                     <Link className='hover:bg-gray-900 p-3 rounded-lg' to='/list'>List</Link>
                   </li>
                   <li className="">
-                     <Link to='/login'>Account</Link>
+                     <Link className='hover:bg-gray-900 p-3 rounded-lg' to='/login'>Account</Link>
                   </li>
                </ul>
          </nav>
          
          <div className=" mt-16 flex w-full">
          
-            <div className="flex ml-16 mt-10 w-555 h-full basis-auto">
+            <div className="flex ml-16 mt-10 w-555 h-auto basis-auto">
                <img className="" src={lninfos.coverImage.large !== 'N/A' ? lninfos.coverImage.large : 'https://viaplaceholder.com/400'} alt={lninfos.title.english} />
             </div>
             
@@ -68,28 +68,33 @@ const NovelInfo = ({lninfos}) => {
                   )
                }
 
-               <div className="mt-10"> {/*https://stackoverflow.com/questions/23310736/two-p-tag-in-same-line*/}
-                  <h2>genres: </h2>
-                  <h4 className="flex ml-10 flex-row">{lninfos.genres.map((genre) => (
+               <div className="mt-5 flex text-1xl uppercase w-auto basis-auto"> {/*https://stackoverflow.com/questions/23310736/two-p-tag-in-same-line*/}
+                  <h2 className="font-bold">genres: </h2>
+                  <h4 className="flex ml-10 flex-row w-auto">{lninfos.genres.map((genre) => (
                      <button className="mr-10">{genre}</button>
                   ))}</h4>
                </div>
 
-               <div className="Ln-status">
-                  <h3>status: {lninfos.status}</h3>
+               <div className="mt-5 flex">
+                  <h3 className="font-bold uppercase text-1xl">status:</h3>
+                  <h3 className="ml-3">{lninfos.status}</h3>
                </div>
                
-               <div className="LN-dates">
-                  <h3>End month & year: {lninfos.endDate.month !== null ? lninfos.endDate.month : 'Releasing'}/{lninfos.endDate.year !== null ? lninfos.endDate.year : 'Releasing'}</h3> {/* need to put releasing/null if still releasing */}
-                  <h3>Start month & year: {lninfos.startDate.month} / {lninfos.startDate.year}</h3>
+               <div className="mt-5 flex">
+                  <h3 className="font-bold">Start Month & Year: </h3>
+                  <h3 className="ml-3">{lninfos.startDate.month} / {lninfos.startDate.year}</h3>
                </div>
 
-               <div className="LN-volumes">
-                  <h3>Volumes: {lninfos.volumes !== null ? lninfos.volumes : 'Still releasing'}</h3>  {/* need to put releasing/null if still releasing */}
+               <div className="flex">
+                  <h3 className="font-bold">End month & year: </h3>
+                  <h3 className="ml-3">{lninfos.endDate.month !== null ? lninfos.endDate.month : 'Releasing'}/{lninfos.endDate.year !== null ? lninfos.endDate.year : 'Releasing'}</h3>
+               </div>
+
+               <div className="mt-5 flex">
+                  <h3 className="font-bold">Volumes:</h3>
+                  <h3 className="ml-3">{lninfos.volumes !== null ? lninfos.volumes : thisIdInfo[0].volumes + " currently"}</h3>
                </div>
             </div>
-         
-
          </div>
          
 
@@ -97,7 +102,8 @@ const NovelInfo = ({lninfos}) => {
          {
             thisIdInfo[0]
             ? (
-               <div className="hasFiles">
+               <div className="justify-center text-center mt-14">
+                  <h3 className="text-slate-300 text-3xl font-bold underline">Volumes</h3>
                   <NovelFiles thisIdInfo={thisIdInfo} lninfos={lninfos}/>
                </div>
             ) : (
