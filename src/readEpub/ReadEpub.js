@@ -11,7 +11,9 @@ const ReadEpub = () => {
     const URLroute = useLocation();
     const myString = (URLroute.pathname.replace(/%20/g, " "));
     const epubFile = (myString.replace(/^\/read\//, ""));
+
     var fileURL = `http://localhost:3001/download/${epubFile}`;
+    
     console.log(fileURL)
 
     const [location, setLocation] = useState(null)

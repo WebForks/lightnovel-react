@@ -1,4 +1,8 @@
-// run node getVolumes.js to start
+// run node index.js to start
+//http://example.com:3000 - website
+//http://example.com:3002/download/{id}  - downloads id in a zipped folder - FolderAPI
+//http://example.com:3001/download/{id}/{filename} - download individaul files and url for files to be read by react-reader - FileAPI
+//filenames() - scans novels folder and creates json file that contains {id, volumes, and files}
 
 const schedule = require('node-schedule');
 const fs = require('fs');

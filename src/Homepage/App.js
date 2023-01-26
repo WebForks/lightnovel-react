@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NovelWorld from "./NovelWorld.jsx";
-import SearchIcon from "./search.svg";
-import "./index.css"
+import SearchIcon from "../search.svg";
+import "../index.css"
 
 
 const App = () => {
+
+   //Press Enter Key to search with searchbar
    const handleKeyDown = event => {
       if (event.key === "Enter") {
          searchLightNovels(searchTerm)
@@ -15,6 +17,7 @@ const App = () => {
    const [lightNovels, setLightNovels] = useState([]);
    const [searchTerm, setSearchTerm] = useState('')
 
+   //filter for anilist search
    let myFilter = {
       format: "NOVEL"
    }
@@ -22,6 +25,7 @@ const App = () => {
    const anilist = require('anilist-node');
    const Anilist = new anilist();
 
+   //takes search of string to find novels id and gets info.  Stores novel info in setLightNovels
    const searchLightNovels = async (title) => {
       let shows = [];
       const titles = String(title)

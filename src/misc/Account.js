@@ -4,7 +4,7 @@ import React from "react";
 const Account = () => {
 
    return (
-       <h3>Hello</h3>
+       <h3 className="text-9xl text-slate-300">IN PROGRESS</h3>
    )
 }
 

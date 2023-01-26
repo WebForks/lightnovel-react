@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import data from "./idVolume.json";
+import data from "../idVolume.json";
 
 import NovelFiles from './NovelFiles';
 
 const NovelInfo = ({lninfos}) => {
+   //gets data from idVolume.json and stores it in an array
    let volumeData = []
    data.map((postData) => {
       volumeData.push(postData);
@@ -13,15 +14,16 @@ const NovelInfo = ({lninfos}) => {
    let searchValue = String(lninfos.id);
    let thisIdInfo = [];
 
+   //searches through volumeData array to find matching id and pushes matching id info to thisIdInfo arary
    for (let i = 0; i < volumeData.length; i++) {
       if (volumeData[i].id === searchValue) {
          thisIdInfo.push(volumeData[i])
       }
    }
 
-   //console.log(thisIdInfo)
-   //console.log(volumeData)
-   //console.log(lninfos)
+   //console.log(thisIdInfo) current pages info in idVolume.json (id: string, volumes: int, files: array[fileName])
+   //console.log(volumeData) puts idVolume.json file into an array
+   //console.log(lninfos) javascript object of the anilist api info of the current page novel/id
 
     return (
       <div className="">
