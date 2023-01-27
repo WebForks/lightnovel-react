@@ -16,8 +16,20 @@ const FileAPI = express();
 
 // use { origin: 'URL OF THE WEBSITE' } to specify which url to allow to accept
 // https://www.section.io/engineering-education/how-to-use-cors-in-nodejs-with-express/
-FolderAPI.use(cors())
-FileAPI.use(cors())
+FolderAPI.use(cors({
+    exposedHeaders: ['Content-Security-Policy']
+}));
+FolderAPI.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "self 'self'");
+    next();
+});
+FileAPI.use(cors({
+    exposedHeaders: ['Content-Security-Policy']
+}));
+FileAPI.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "self 'self'");
+    next();
+});
 
 
 FolderAPI.get('/download/:id', (req, res) => {
