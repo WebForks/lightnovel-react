@@ -12,7 +12,7 @@ const ReadEpub = () => {
     const myString = (URLroute.pathname.replace(/%20/g, " "));
     const epubFile = (myString.replace(/^\/read\//, ""));
 
-    var fileURL = `http://localhost:3001/download/${epubFile}`;
+    var fileURL = `http://10.5.233.149:3001/download/${epubFile}`;
     
     console.log(fileURL)
 
