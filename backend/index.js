@@ -1,7 +1,7 @@
 // run node index.js to start
 //http://example.com:3000 - website
 //http://example.com:3002/download/{id}  - downloads id in a zipped folder - FolderAPI
-//http://example.com:3001/download/{id}/{filename} - download individaul files and url for files to be read by react-reader - FileAPI
+//http://example.com:3001/files/{id}/{filename} - download individaul files and url for files to be read by react-reader - FileAPI
 //filenames() - scans novels folder and creates json file that contains {id, volumes, and files}
 
 const schedule = require('node-schedule');
@@ -16,8 +16,20 @@ const FileAPI = express();
 
 // use { origin: 'URL OF THE WEBSITE' } to specify which url to allow to accept
 // https://www.section.io/engineering-education/how-to-use-cors-in-nodejs-with-express/
-FolderAPI.use(cors())
-FileAPI.use(cors())
+FolderAPI.use(cors({
+    exposedHeaders: ['Content-Security-Policy']
+}));
+FolderAPI.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "self 'self'");
+    next();
+});
+FileAPI.use(cors({
+    exposedHeaders: ['Content-Security-Policy']
+}));
+FileAPI.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "self 'self'");
+    next();
+});
 
 
 FolderAPI.get('/download/:id', (req, res) => {
@@ -37,26 +49,23 @@ FolderAPI.listen(3002, () => {
 });
 
 
-FileAPI.get("/download/:id/:filename", (req, res) => {    
+FileAPI.get("/files/:id/:filename", (req, res) => {
     const fileName = req.params.filename;
     const id = req.params.id;
     const filePath = `../novels/${id}/${fileName}`;
     res.download(
-        filePath, 
-        (err) => {           
+        filePath,
+        (err) => {
             if (err) {
                 res.send({
-                    error : err,
-                    msg   : "Problem downloading the file"
+                    error: err,
+                    msg: "Problem downloading the file"
                 })
-            }    
+            }
         });
 });
 
-FileAPI.listen( 3001, () => console.log("FileAPI listening to port " + 3001))
-
-
-
+FileAPI.listen(3001, () => console.log("FileAPI listening to port " + 3001))
 
 const directory = '../novels'
 const FileJson = '../src/idVolume.json'
@@ -77,21 +86,21 @@ function getSubDirectories(callback) {
     });
 }
 
-function fileNames () {
+function fileNames() {
     getSubDirectories((subdirectories) => {
         const readPromises = subdirectories.map(subdir => {
             return new Promise((resolve, reject) => {
                 fs.readdir(`../novels/${subdir}`, (err, files) => {
                     if (err) {
-                      reject(err);
-                      return;
+                        reject(err);
+                        return;
                     }
-                    resolve({subdir, files});
+                    resolve({ subdir, files });
                 });
             });
         });
         Promise.all(readPromises).then(filesArrays => {
-            const filesPerDirectory = filesArrays.map(({subdir, files}) => {
+            const filesPerDirectory = filesArrays.map(({ subdir, files }) => {
                 return {
                     id: subdir,
                     volumes: files.length,

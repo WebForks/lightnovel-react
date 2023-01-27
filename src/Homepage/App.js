@@ -43,7 +43,7 @@ const App = () => {
 
    return (
       <div className="" >
-         <nav className="flex justify-center bg-gray-700 w-full fixed top-0 shadow-lg backdrop-blur bg-opacity-90 h-16 items-center z-4">
+         <nav className="flex justify-center bg-gray-700 w-full fixed top-0 shadow-lg backdrop-blur bg-opacity-90 h-16 items-center z-40">
                <ul className="flex text-slate-300 font-bold">
                   <li className="mr-6">
                      <Link className='hover:bg-gray-900 p-3 rounded-lg' to='/'>Home</Link>
