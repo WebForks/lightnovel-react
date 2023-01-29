@@ -3,7 +3,7 @@
 3. run npm run build
 4. run npm install -g serve
 5. run npm install forever -g
-6. cd into builds folder and run "forever start -c "serve -s" ./
+6. cd into builds folder and run forever start -c "serve -s" ./
 7. cd into backend folder and run forever start -c "node index.js" ./
 
 npm list -g = corepack, forever, npm, serve
