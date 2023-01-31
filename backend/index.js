@@ -10,6 +10,8 @@ const jsonfile = require('jsonfile')
 const express = require('express');
 const archiver = require('archiver'); // npm package to archive files
 const cors = require('cors');
+const path = require('path');
+
 
 const FolderAPI = express();
 const FileAPI = express();
@@ -108,3 +110,42 @@ rule.hour = 4;
 rule.minute = 0;
 
 const job = schedule.scheduleJob(rule, fileNames);
+
+
+/*
+// Function to delete a file
+const deleteFile = (file) => {
+  fs.unlink(file, (err) => {
+    if (err) throw err;
+    console.log(`Deleted ${file}`);
+  });
+};
+
+// Recursively search a directory for files
+const searchDirectory = (dir) => {
+  fs.readdir(dir, (err, files) => {
+    if (err) throw err;
+
+    files.forEach((file) => {
+      const filePath = path.join(dir, file);
+      fs.stat(filePath, (err, stats) => {
+        if (err) throw err;
+
+        // If the file is a regular file (not a directory)
+        if (stats.isFile()) {
+          // If it's not an .epub file, delete it
+          if (!filePath.endsWith('.epub')) {
+            deleteFile(filePath);
+          }
+        } else if (stats.isDirectory()) {
+          // If it's a directory, search it recursively
+          searchDirectory(filePath);
+        }
+      });
+    });
+  });
+};
+
+// Call the search function, passing the directory path as an argument
+searchDirectory('/path/to/directory');
+*/
