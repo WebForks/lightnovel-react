@@ -94,7 +94,7 @@ const NovelInfo = ({lninfos}) => {
 
                <div className="mt-5 flex">
                   <h3 className="font-bold">Volumes:</h3>
-                  <h3 className="ml-3">{lninfos.volumes !== null ? lninfos.volumes : thisIdInfo[0].volumes + " currently"}</h3>
+                  <h3 className="ml-3">{lninfos.volumes !== undefined ? lninfos.volumes : thisIdInfo[0].volumes + " currently"}</h3>
                </div>
             </div>
          </div>
